@@ -2,7 +2,7 @@
   <div class="container">
     <!--<div class="title">Benefits</div>-->
     <div class="title" style="color: darkblue">Add User</div>
-    <%= form_for(@users, url: root_path) do |f| %>
+    <%= form_for(@users, url: user_profiles_path) do |f| %>
 
         <div class= "field" style="margin-bottom: 10px;">
           <%= f.label :username %><br />
@@ -36,11 +36,6 @@
         <div class="field" style="margin-bottom: 10px;">
           <%= f.label :phone_number %><br />
           <%= f.text_field :phone_number, autocomplete: "off" %>
-        </div>
-
-        <div class="field" style="margin-bottom: 10px;">
-          <%= f.label :role %><br />
-          <%= f.text_field :role, autocomplete: "off" %>
         </div>
 
         <div style="margin-top: 30px; margin-left: 60px;">

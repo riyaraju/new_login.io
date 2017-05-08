@@ -1,2 +1,48 @@
-<h1>UserProfiles#edit</h1>
-<p>Find me in app/views/user_profiles/edit.html.erb</p>
+<div class="benefits">
+  <div class="container">
+    <!--<div class="title">Benefits</div>-->
+    <div class="title" style="color: darkblue">Add User</div>
+    <%= form_for(@users, url: user_profile_path) do |f| %>
+
+        <div class= "field" style="margin-bottom: 10px;">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, autofocus:true %>
+        </div>
+
+        <div class="field" style="margin-bottom: 10px;">
+          <%= f.label :email %><br />
+          <%= f.email_field :email%>
+        </div>
+
+        <div class="field" style="margin-bottom: 10px;">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+
+        <div class="field" style="margin-bottom: 10px;">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="field" style="margin-bottom: 10px;">
+          <%= f.label :age %><br />
+          <%= f.text_field :age, autocomplete: "off" %>
+        </div>
+
+        <div class="field" style="margin-bottom: 10px;">
+          <%= f.label :phone_number %><br />
+          <%= f.text_field :phone_number, autocomplete: "off" %>
+        </div>
+
+        <div style="margin-top: 30px; margin-left: 60px;">
+          <%= button_to "Submit" %>
+        </div>
+
+    <% end %>
+  </div>
+</div>
+
