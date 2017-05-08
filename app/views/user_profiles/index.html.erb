@@ -1,20 +1,20 @@
 <div class="index">
-<div class="title">Profile</div>
+  <div class="title">Profile</div>
 
 
   <div class="view-profile">
     <h1>
 
-      <%= image_tag current_user.gravatar_url %>
-        <%= current_user.username %>
+      <%= image_tag @user.gravatar_url %>
+      <%= @user.username %>
       <ul>
-      <h6 style="color: darkblue">
+        <h6 style="color: darkblue">
 
-        <dd> Email - <%=current_user.email%> </dd>
-        <dd> Age - <%=current_user.age%></dd>
-        <dd> Phone Number - <%=current_user.phone_number%></dd>
-      </h6>
-    </ul>
+          <dd> Email - <%=@user.email%> </dd>
+          <dd> Age - <%=@user.age%></dd>
+          <dd> Phone Number - <%=@user.phone_number%></dd>
+        </h6>
+      </ul>
     </h1>
   </div>
 </div>
