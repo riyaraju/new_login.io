@@ -1,0 +1,14 @@
+<div class="index">
+  <div class="title">Users List</div>
+  <div class="list">
+    <% @users.each do |list|%>
+        <ul>
+          <%= image_tag list.gravatar_url %>
+          <div class="usr-list">
+          <%= link_to list.username, user_view_path(list.id)%>
+            <%=link_to 'Delete', user_profile_path(list), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
+          </div>
+        </ul>
+    <% end %>
+  </div>
+</div>
