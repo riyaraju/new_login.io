@@ -1,8 +1,14 @@
 class UserProfilesController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_admin!, only: [:edit, :list, :destroy]
+  skip_before_filter :verify_authenticity_token
   def index
     if params[:id]
-      @user = User.find(params[:id])
+      if current_user.role == 'admin'
+        @user = User.find(params[:id])
+      else
+        redirect_to root_path
+      end
     else
       @user = current_user
     end
@@ -13,11 +19,13 @@ class UserProfilesController < ApplicationController
   end
 
   def edit
+
     @users = User.find(params[:id])
+
   end
 
   def list
-    @users = User.all
+      @users = User.all
   end
 
   def destroy
@@ -30,8 +38,6 @@ class UserProfilesController < ApplicationController
     @users = User.create!(params_user)
     if @users.save
       redirect_to user_profiles_list_path
-    else
-      p 'hiiiii'
     end
   end
 
@@ -39,6 +45,12 @@ class UserProfilesController < ApplicationController
     @users = User.find(params[:id])
     if @users.update_attributes(params_user)
       redirect_to user_profiles_list_path
+    end
+  end
+
+  def authenticate_admin!
+    unless current_user.role == 'admin'
+      redirect_to root_path
     end
   end
 
