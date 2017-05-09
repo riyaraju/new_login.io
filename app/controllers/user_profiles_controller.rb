@@ -62,6 +62,9 @@ class UserProfilesController < ApplicationController
   private
 
   def params_user
-    params.require(:user).permit(:email, :password, :password_confirmation, :username, :phone_number, :age)
+    params_user = params.require(:user).permit(:email, :password, :password_confirmation, :username, :phone_number, :age)
+    params_user.delete(:password) unless params_user[:password].present?
+    params_user.delete(:password_confirmation) unless params_user[:password_confirmation].present?
+    params_user
   end
 end
