@@ -25,11 +25,11 @@ class UserProfilesController < ApplicationController
   end
 
   def list
-      @users = User.all
+      @users = User.where(role: nil)
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    User.find(params[:id]).destro
     flash[:success] = "User deleted"
     redirect_to :back
   end
@@ -47,9 +47,9 @@ class UserProfilesController < ApplicationController
     @users = User.find(params[:id])
     if @users.update_attributes(params_user)
       redirect_to user_profiles_list_path
-    end
-  else
+    else
     render 'edit'
+    end
   end
 
   def authenticate_admin!
