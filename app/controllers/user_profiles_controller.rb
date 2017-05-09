@@ -35,9 +35,11 @@ class UserProfilesController < ApplicationController
   end
 
   def create
-    @users = User.create!(params_user)
+    @users = User.new(params_user)
     if @users.save
       redirect_to user_profiles_list_path
+    else
+      render 'new'
     end
   end
 
@@ -46,6 +48,8 @@ class UserProfilesController < ApplicationController
     if @users.update_attributes(params_user)
       redirect_to user_profiles_list_path
     end
+  else
+    render 'edit'
   end
 
   def authenticate_admin!

@@ -3,6 +3,7 @@
     <!--<div class="title">Benefits</div>-->
     <div class="title" style="color: darkblue">Add User</div>
     <%= form_for(@users, url: user_profiles_path) do |f| %>
+        <%= render partial: 'shared/error_messages', locals: {:target => @users} %>
 
         <div class= "field" style="margin-bottom: 10px;">
           <%= f.label :username %><br />
