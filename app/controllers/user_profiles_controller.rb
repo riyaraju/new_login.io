@@ -1,7 +1,7 @@
 class UserProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!, only: [:edit, :list, :destroy]
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   def index
     if params[:id]
       if current_user.role == 'admin'
@@ -29,7 +29,7 @@ class UserProfilesController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destro
+    User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to :back
   end
